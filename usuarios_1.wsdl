@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://desafio.ebix/usuario-ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://desafio.ebix/usuario-ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://desafio.ebix/usuario-ws">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://desafio.ebix/usuario-ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getUsuarioByIdRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="usuarioId" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUsuarioByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="UsuarioInfo" type="tns:UsuarioInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUsuarioByEmailRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="usuarioEmail" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getUsuarioByEmailResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="UsuarioInfo" type="tns:UsuarioInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="UsuarioInfo">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="nome" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+          <xs:element name="telefone" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getAllUsuariosRequest">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="getAllUsuariosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="UsuarioInfo" type="tns:UsuarioInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllUsuariosByNomeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="usuarioNome" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllUsuariosByNomeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="UsuarioInfo" type="tns:UsuarioInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllUsuariosByEmailRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="usuarioEmail" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAllUsuariosByEmailResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="UsuarioInfo" type="tns:UsuarioInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="serviceStatus">
+        <xs:sequence>
+          <xs:element name="statusCode" type="xs:string"/>
+          <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="createUsuarioRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="UsuarioInfo" type="tns:UsuarioInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="createUsuarioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            <xs:element name="UsuarioInfo" type="tns:UsuarioInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateUsuarioRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="usuarioId" type="xs:int"/>
+            <xs:element name="UsuarioInfo" type="tns:UsuarioInfo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateUsuarioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteUsuarioRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="usuarioId" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteUsuarioResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="updateUsuarioRequest">
+    <wsdl:part element="tns:updateUsuarioRequest" name="updateUsuarioRequest"/>
+  </wsdl:message>
+  <wsdl:message name="createUsuarioRequest">
+    <wsdl:part element="tns:createUsuarioRequest" name="createUsuarioRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getAllUsuariosByNomeRequest">
+    <wsdl:part element="tns:getAllUsuariosByNomeRequest" name="getAllUsuariosByNomeRequest"/>
+  </wsdl:message>
+  <wsdl:message name="createUsuarioResponse">
+    <wsdl:part element="tns:createUsuarioResponse" name="createUsuarioResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getAllUsuariosRequest">
+    <wsdl:part element="tns:getAllUsuariosRequest" name="getAllUsuariosRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getAllUsuariosResponse">
+    <wsdl:part element="tns:getAllUsuariosResponse" name="getAllUsuariosResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getUsuarioByIdResponse">
+    <wsdl:part element="tns:getUsuarioByIdResponse" name="getUsuarioByIdResponse"/>
+  </wsdl:message>
+  <wsdl:message name="updateUsuarioResponse">
+    <wsdl:part element="tns:updateUsuarioResponse" name="updateUsuarioResponse"/>
+  </wsdl:message>
+  <wsdl:message name="deleteUsuarioResponse">
+    <wsdl:part element="tns:deleteUsuarioResponse" name="deleteUsuarioResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getUsuarioByEmailResponse">
+    <wsdl:part element="tns:getUsuarioByEmailResponse" name="getUsuarioByEmailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getUsuarioByEmailRequest">
+    <wsdl:part element="tns:getUsuarioByEmailRequest" name="getUsuarioByEmailRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getUsuarioByIdRequest">
+    <wsdl:part element="tns:getUsuarioByIdRequest" name="getUsuarioByIdRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getAllUsuariosByEmailResponse">
+    <wsdl:part element="tns:getAllUsuariosByEmailResponse" name="getAllUsuariosByEmailResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getAllUsuariosByEmailRequest">
+    <wsdl:part element="tns:getAllUsuariosByEmailRequest" name="getAllUsuariosByEmailRequest"/>
+  </wsdl:message>
+  <wsdl:message name="deleteUsuarioRequest">
+    <wsdl:part element="tns:deleteUsuarioRequest" name="deleteUsuarioRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getAllUsuariosByNomeResponse">
+    <wsdl:part element="tns:getAllUsuariosByNomeResponse" name="getAllUsuariosByNomeResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="UsuariosPort">
+    <wsdl:operation name="updateUsuario">
+      <wsdl:input message="tns:updateUsuarioRequest" name="updateUsuarioRequest"/>
+      <wsdl:output message="tns:updateUsuarioResponse" name="updateUsuarioResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="createUsuario">
+      <wsdl:input message="tns:createUsuarioRequest" name="createUsuarioRequest"/>
+      <wsdl:output message="tns:createUsuarioResponse" name="createUsuarioResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsuariosByNome">
+      <wsdl:input message="tns:getAllUsuariosByNomeRequest" name="getAllUsuariosByNomeRequest"/>
+      <wsdl:output message="tns:getAllUsuariosByNomeResponse" name="getAllUsuariosByNomeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsuarios">
+      <wsdl:input message="tns:getAllUsuariosRequest" name="getAllUsuariosRequest"/>
+      <wsdl:output message="tns:getAllUsuariosResponse" name="getAllUsuariosResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarioById">
+      <wsdl:input message="tns:getUsuarioByIdRequest" name="getUsuarioByIdRequest"/>
+      <wsdl:output message="tns:getUsuarioByIdResponse" name="getUsuarioByIdResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUsuario">
+      <wsdl:input message="tns:deleteUsuarioRequest" name="deleteUsuarioRequest"/>
+      <wsdl:output message="tns:deleteUsuarioResponse" name="deleteUsuarioResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarioByEmail">
+      <wsdl:input message="tns:getUsuarioByEmailRequest" name="getUsuarioByEmailRequest"/>
+      <wsdl:output message="tns:getUsuarioByEmailResponse" name="getUsuarioByEmailResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsuariosByEmail">
+      <wsdl:input message="tns:getAllUsuariosByEmailRequest" name="getAllUsuariosByEmailRequest"/>
+      <wsdl:output message="tns:getAllUsuariosByEmailResponse" name="getAllUsuariosByEmailResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UsuariosPortSoap11" type="tns:UsuariosPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="updateUsuario">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="updateUsuarioRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateUsuarioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createUsuario">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="createUsuarioRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createUsuarioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsuariosByNome">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllUsuariosByNomeRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllUsuariosByNomeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsuarios">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllUsuariosRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllUsuariosResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarioById">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getUsuarioByIdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUsuarioByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteUsuario">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="deleteUsuarioRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteUsuarioResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarioByEmail">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getUsuarioByEmailRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUsuarioByEmailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUsuariosByEmail">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllUsuariosByEmailRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllUsuariosByEmailResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UsuariosPortService">
+    <wsdl:port binding="tns:UsuariosPortSoap11" name="UsuariosPortSoap11">
+      <soap:address location="http://localhost:8080/soapws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
